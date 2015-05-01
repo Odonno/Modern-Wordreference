@@ -66,7 +66,7 @@ namespace Wordreference.Core.ViewModel
             SimpleIoc.Default.Register<IMainViewModel, MainViewModel>();
             SimpleIoc.Default.Register<ITranslationViewModel, TranslationViewModel>();
             SimpleIoc.Default.Register<IAboutViewModel, AboutViewModel>();
-            SimpleIoc.Default.Register<ISettingsViewModel, SettingsViewModel>(true);
+            SimpleIoc.Default.Register<ISettingsViewModel, SettingsViewModel>();
         }
 
 

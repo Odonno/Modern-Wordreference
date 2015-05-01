@@ -7,7 +7,6 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:templateSelectors="using:Wordreference.TemplateSelectors"
-    xmlns:userControls="using:Wordreference.UserControls"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
     RequestedTheme="Light">
@@ -96,11 +95,6 @@
                     <TextBlock Text="{Binding FirstTranslation.Sens}" Visibility="{Binding FirstTranslation.Sens, Converter={StaticResource StringToVisibilityConverter}}" TextWrapping="Wrap" FontStyle="Italic"/>
                 </StackPanel>
             </Grid>
-        </DataTemplate>
-
-        <!-- Ad template -->
-        <DataTemplate x:Key="AdTemplate">
-            <userControls:AdUserControl HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
         </DataTemplate>
 
         <!-- DataTemplateSelector for translation to mix between 'TranslationsDataTemplate' and 'AlternativeTranslationsDataTemplate' -->
@@ -360,7 +354,7 @@
                               HorizontalAlignment="Stretch"
                               ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto"
                               ItemsSource="{Binding Source={StaticResource cvs}}"
-                              ItemTemplateSelector="{StaticResource TranslationWithAdsDataTemplateSelector}">
+                              ItemTemplateSelector="{StaticResource TranslationDataTemplateSelector}">
 
                         <GridView.GroupStyle>
                             <GroupStyle HidesIfEmpty="True" HeaderTemplate="{StaticResource TranslationsGroupHeaderTemplate}">

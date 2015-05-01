@@ -64,12 +64,15 @@ namespace Wordreference.Core.ViewModel.Concrete
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IRatingService ratingService, ISecondaryTileService<ITranslationViewModel> translationsSecondaryTileService)
+        public MainViewModel(IRatingService ratingService,
+            ISecondaryTileService<ITranslationViewModel> translationsSecondaryTileService)
         {
-            // Injection
-            RatingService = ratingService;
+            // Injection of ViewModels
             TranslationViewModel = ViewModelLocator.TranslationVM;
             SettingsViewModel = ViewModelLocator.SettingsVM;
+
+            // Injection of services
+            RatingService = ratingService;
             TranslationsSecondaryTileService = translationsSecondaryTileService;
 
             // Commands

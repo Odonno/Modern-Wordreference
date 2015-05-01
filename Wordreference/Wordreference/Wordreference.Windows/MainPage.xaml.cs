@@ -16,7 +16,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // Pour en savoir plus sur le modèle d'élément Page vierge, consultez la page http://go.microsoft.com/fwlink/?LinkId=234238
-using Microsoft.Advertising.WinRT.UI;
 
 namespace Wordreference
 {
@@ -27,22 +26,13 @@ namespace Wordreference
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             SettingsPane.GetForCurrentView().CommandsRequested += MainPage_CommandsRequested;
 
             SizeChanged += Page_SizeChanged;
         }
 
-
-        private void Button_OnPointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Hand, 1);
-        }
-        private void Button_OnPointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 2);
-        }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
