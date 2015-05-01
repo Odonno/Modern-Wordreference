@@ -1,0 +1,16 @@
+<Application x:Class="Wordreference.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:Wordreference.Converters"
+             xmlns:viewModel="using:Wordreference.Core.ViewModel">
+    <Application.Resources>
+        <!-- Converters -->
+        <converters:ImageSourceConverter x:Key="ImageConverter" />
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+        <converters:EnterKeyDownConverter x:Key="EnterKeyDownConverter" />
+
+        <!-- ViewModel Locator -->
+        <viewModel:ViewModelLocator x:Key="Locator" />
+    </Application.Resources>
+</Application>

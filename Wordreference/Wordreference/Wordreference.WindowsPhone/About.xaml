@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="Wordreference.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:Wordreference.Styles.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding Source={StaticResource Locator}, Path=About}">
+
+    <Page.Resources>
+        <!-- Theme converters -->
+        <converters:RequestedThemeConverter x:Key="RequestedThemeConverter" />
+        <converters:ItemBackgroundThemeConverter x:Key="BackgroundThemeConverter" />
+    </Page.Resources>
+    
+    <Grid x:Name="LayoutRoot"
+          Background="{Binding Source={StaticResource Locator}, Path=Settings.SelectedTheme, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BackgroundThemeConverter}}" 
+          RequestedTheme="{Binding Source={StaticResource Locator}, Path=Settings.SelectedTheme, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource RequestedThemeConverter}}">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Panneau Titre -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock x:Uid="/UIResources/about" Text="about" Margin="0,-6.5,0,26.5" 
+                       Style="{ThemeResource HeaderTextBlockStyle}" 
+                       CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!-- content -->
+        <StackPanel Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <TextBlock x:Uid="/UIResources/infosApp" Style="{ThemeResource BodyTextBlockStyle}" />
+            <TextBlock x:Uid="/UIResources/infosApp2" Margin="0 10 0 0" Style="{ThemeResource BodyTextBlockStyle}" />
+        </StackPanel>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar Background="#FF5E58C7" IsOpen="False">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="goToTwitterButton" Label="tweet me" Command="{Binding Path=GoToTwitterCommand}">
+                    <AppBarButton.Icon>
+                        <BitmapIcon UriSource="Assets/Icons/Twitter-Bird.png" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

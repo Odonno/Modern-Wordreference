@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="Wordreference.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:Wordreference.Styles.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding Source={StaticResource Locator}, Path=Settings}">
+
+    <Page.Resources>
+        <!-- Theme converters -->
+        <converters:RequestedThemeConverter x:Key="RequestedThemeConverter" />
+        <converters:ItemBackgroundThemeConverter x:Key="BackgroundThemeConverter" />
+    </Page.Resources>
+    
+    <Grid x:Name="LayoutRoot" 
+          Background="{Binding Path=SelectedTheme, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BackgroundThemeConverter}}" 
+          RequestedTheme="{Binding Path=SelectedTheme, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource RequestedThemeConverter}}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Panneau Titre -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock x:Uid="/UIResources/settings" Text="settings" Margin="0,-6.5,0,26.5" 
+                       Style="{ThemeResource HeaderTextBlockStyle}" 
+                       CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!-- content -->
+        <StackPanel Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <TextBlock x:Uid="/UIResources/theme" Text="thème" Style="{ThemeResource BodyTextBlockStyle}" />
+            <ComboBox ItemsSource="{Binding Path=Themes}" SelectedItem="{Binding Path=SelectedTheme, Mode=TwoWay}"
+                      RequestedTheme="{Binding Path=SelectedTheme, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource RequestedThemeConverter}}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+</Page>

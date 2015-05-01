@@ -1,0 +1,426 @@
+﻿<Page
+    x:Class="Wordreference.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:templateSelectors="using:Wordreference.TemplateSelectors"
+    xmlns:userControls="using:Wordreference.UserControls"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+    RequestedTheme="Light">
+
+    <Page.Resources>
+        <!-- Data Source (translations) -->
+        <CollectionViewSource x:Name="cvs" IsSourceGrouped="true" Source="{Binding Path=TranslationViewModel.TranslatedKeyGroup}"/>
+
+        <!-- DataTemplate for languages (flags) -->
+        <DataTemplate x:Key="LanguageDataTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Image Margin="10" MaxWidth="50" MaxHeight="50" Source="{Binding Image, Converter={StaticResource ImageConverter}}" />
+                <TextBlock Margin="10 0 0 0" Text="{Binding Nom}" VerticalAlignment="Center" />
+            </StackPanel>
+        </DataTemplate>
+
+        <!-- DataTemplate for translation -->
+        <DataTemplate x:Key="TranslationDataTemplate">
+            <Grid Width="250" Height="250" Background="#EBEBF2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding TermeOriginal.Type}" Foreground="#0645AD" Margin="0 0 5 0" 
+        					Visibility="{Binding TermeOriginal.Type, Converter={StaticResource StringToVisibilityConverter}}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding TermeOriginal.Nom}" TextWrapping="Wrap" Foreground="Black"/>
+                    </Grid>
+                    <TextBlock Text="{Binding TermeOriginal.Sens}" Visibility="{Binding TermeOriginal.Sens, Converter={StaticResource StringToVisibilityConverter}}" TextWrapping="Wrap" FontStyle="Italic"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Margin="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding FirstTranslation.Type}" Foreground="#0645AD" Margin="0 0 5 0" 
+        					Visibility="{Binding FirstTranslation.Type, Converter={StaticResource StringToVisibilityConverter}}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding FirstTranslation.Nom}" TextWrapping="Wrap" Foreground="Black"/>
+                    </Grid>
+                    <TextBlock Text="{Binding FirstTranslation.Sens}" Visibility="{Binding FirstTranslation.Sens, Converter={StaticResource StringToVisibilityConverter}}" TextWrapping="Wrap" FontStyle="Italic"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <!-- Alternative DataTemplate for translation -->
+        <DataTemplate x:Key="AlternativeTranslationDataTemplate">
+            <Grid Width="250" Height="250" Background="#D7D7D7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding TermeOriginal.Type}" Foreground="#0645AD" Margin="0 0 5 0" 
+        					Visibility="{Binding TermeOriginal.Type, Converter={StaticResource StringToVisibilityConverter}}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding TermeOriginal.Nom}" TextWrapping="Wrap" Foreground="Black"/>
+                    </Grid>
+                    <TextBlock Text="{Binding TermeOriginal.Sens}" Visibility="{Binding TermeOriginal.Sens, Converter={StaticResource StringToVisibilityConverter}}" TextWrapping="Wrap" FontStyle="Italic"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Margin="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding FirstTranslation.Type}" Foreground="#0645AD" Margin="0 0 5 0" 
+        					Visibility="{Binding FirstTranslation.Type, Converter={StaticResource StringToVisibilityConverter}}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding FirstTranslation.Nom}" TextWrapping="Wrap" Foreground="Black"/>
+                    </Grid>
+                    <TextBlock Text="{Binding FirstTranslation.Sens}" Visibility="{Binding FirstTranslation.Sens, Converter={StaticResource StringToVisibilityConverter}}" TextWrapping="Wrap" FontStyle="Italic"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <!-- Ad template -->
+        <DataTemplate x:Key="AdTemplate">
+            <userControls:AdUserControl HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
+        </DataTemplate>
+
+        <!-- DataTemplateSelector for translation to mix between 'TranslationsDataTemplate' and 'AlternativeTranslationsDataTemplate' -->
+        <templateSelectors:TranslationDataTemplateSelector x:Key="TranslationDataTemplateSelector"
+                                                           TranslationTemplate="{StaticResource TranslationDataTemplate}"
+                                                           AlternativeTranslationTemplate="{StaticResource AlternativeTranslationDataTemplate}"/>
+
+        <!-- Jump Template (when SemanticZoom is out) -->
+        <DataTemplate x:Key="TranslationsJumpTemplate">
+            <Border Background="#FF5E58C7">
+                <TextBlock Text="{Binding Group.Key}" Foreground="#FFEBEBF2" FontSize="32" Padding="6" />
+            </Border>
+        </DataTemplate>
+
+        <!-- Group Header Template of Translations -->
+        <DataTemplate x:Key="TranslationsGroupHeaderTemplate">
+            <Border Height="42">
+                <TextBlock Text="{Binding Key}" Style="{StaticResource SubheaderTextBlockStyle}" VerticalAlignment="Top" />
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid x:Name="rootGrid" Background="#F6F6F9">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="SnappedView">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="parameterGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="textBlock">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>60,30,0,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Height" Storyboard.TargetName="parameterRow">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    150
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="translationsGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="NormalView">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="snappedParameterGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="snappedTranslationsGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="titleRow" Height="60"/>
+            <RowDefinition x:Name="parameterRow" Height="120"/>
+            <RowDefinition x:Name="translationsRow" Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- The title block -->
+        <Grid x:Name="titleGrid" Background="#FF5E58C7">
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Text="wordreference" Margin="120,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Style="{StaticResource TitleTextBlockStyle}" Foreground="White" />
+        </Grid>
+
+        <!-- The parameter block (languages, word) - normal view -->
+        <Grid x:Name="parameterGrid" Grid.Row="1" Background="#FFEBEBF2" DataContext="{Binding Path=TranslationViewModel}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="120 0 0 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <TextBlock x:Uid="/UIResources/fromText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource HeaderTextBlockStyle}"/>
+                <ComboBox VerticalAlignment="Top" Margin="0 10 0 0" Height="41"
+					SelectedItem="{Binding LanguageDepart, Mode=TwoWay}" ItemsSource="{Binding LanguageFactory.Languages}" ItemTemplate="{StaticResource LanguageDataTemplate}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="10" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <TextBlock x:Uid="/UIResources/wordText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource HeaderTextBlockStyle}"/>
+
+                <Grid Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Column="0" TextWrapping="Wrap" Margin="0 0 10 0" Text="{Binding MotRecherche, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" PlaceholderText="Type your word here." >
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="KeyDown">
+                                <core:InvokeCommandAction Command="{Binding TranslateWithParamCommand}" InputConverter="{StaticResource EnterKeyDownConverter}"/>
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                    </TextBox>
+                    <Button Grid.Column="1" Content="&#xE11A;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Command="{Binding TranslateCommand}" FontFamily="Segoe UI Symbol" FontSize="18" />
+                    <Button Grid.Column="2" Content="&#xE13C;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Command="{Binding SwitchCommand}" FontFamily="Segoe UI Symbol" FontSize="18" />
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Margin="0 0 120 0" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <TextBlock x:Uid="/UIResources/toText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource HeaderTextBlockStyle}"/>
+                <ComboBox HorizontalAlignment="Stretch" Margin="0,10,0,0" VerticalAlignment="Top" Height="41"
+					SelectedItem="{Binding LanguageArrive, Mode=TwoWay}" ItemsSource="{Binding LanguageFactory.Languages}" ItemTemplate="{StaticResource LanguageDataTemplate}"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- The parameter block (languages, word) - snapped view -->
+        <Grid x:Name="snappedParameterGrid" Grid.Row="1" Background="#FFEBEBF2" DataContext="{Binding Path=TranslationViewModel}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Margin="60 12 20 12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Uid="/UIResources/fromText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource HeaderTextBlockStyle}" FontSize="32" />
+
+                <TextBlock Grid.Row="1" x:Uid="/UIResources/wordText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource HeaderTextBlockStyle}" FontSize="32"/>
+
+                <TextBlock Grid.Row="2" x:Uid="/UIResources/toText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource HeaderTextBlockStyle}" FontSize="32"/>
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="0 12 60 12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ComboBox VerticalAlignment="Center" Margin="0 0 10 0" Height="41"
+					SelectedItem="{Binding LanguageDepart, Mode=TwoWay}" ItemsSource="{Binding LanguageFactory.Languages}" ItemTemplate="{StaticResource LanguageDataTemplate}"/>
+
+                <Grid Grid.Row="1" Margin="0,0,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Column="0" TextWrapping="Wrap" Margin="0 0 10 0" Text="{Binding MotRecherche, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" PlaceholderText="Type your word here." >
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="KeyDown">
+                                <core:InvokeCommandAction Command="{Binding TranslateWithParamCommand}" InputConverter="{StaticResource EnterKeyDownConverter}"/>
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                    </TextBox>
+                    <Button Grid.Column="1" Content="&#xE11A;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Command="{Binding TranslateCommand}" FontFamily="Segoe UI Symbol" FontSize="18" />
+                    <Button Grid.Column="2" Content="&#xE13C;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Command="{Binding SwitchCommand}" FontFamily="Segoe UI Symbol" FontSize="18" />
+                </Grid>
+
+                <ComboBox Grid.Row="2" HorizontalAlignment="Stretch" Margin="0,0,10,0" VerticalAlignment="Top" Height="41"
+					SelectedItem="{Binding LanguageArrive, Mode=TwoWay}" ItemsSource="{Binding LanguageFactory.Languages}" ItemTemplate="{StaticResource LanguageDataTemplate}"/>
+            </Grid>
+        </Grid>
+
+        <!-- The SemanticZoom that contains Translations - normal view -->
+        <Grid x:Name="translationsGrid" Grid.Row="2" Background="#F6F6F9" DataContext="{Binding Path=TranslationViewModel}">
+
+            <SemanticZoom VerticalAlignment="Stretch">
+                <SemanticZoom.ZoomedInView>
+                    <GridView HorizontalAlignment="Left"
+						        SelectionMode="None"
+						        IsSwipeEnabled="false"
+						        IsItemClickEnabled="False"
+						        ItemsSource="{Binding Source={StaticResource cvs}}"
+						        ItemTemplateSelector="{StaticResource TranslationDataTemplateSelector}">
+
+                        <GridView.GroupStyle>
+                            <GroupStyle HidesIfEmpty="True" HeaderTemplate="{StaticResource TranslationsGroupHeaderTemplate}">
+                                <GroupStyle.HeaderContainerStyle>
+                                    <Style TargetType="GridViewHeaderItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </GroupStyle.HeaderContainerStyle>
+
+                                <GroupStyle.Panel>
+                                    <ItemsPanelTemplate>
+                                        <VariableSizedWrapGrid Orientation="Vertical" Margin="0,0,80,0"/>
+                                    </ItemsPanelTemplate>
+                                </GroupStyle.Panel>
+                            </GroupStyle>
+                        </GridView.GroupStyle>
+
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="IsHitTestVisible" Value="False" />
+                                <Setter Property="Margin" Value="-4" />
+                            </Style>
+                        </GridView.ItemContainerStyle>
+
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid GroupHeaderPlacement="Top" GroupPadding="114,0,0,0"/>
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+
+                    </GridView>
+                </SemanticZoom.ZoomedInView>
+
+                <SemanticZoom.ZoomedOutView>
+                    <ListView Background="#FFEBEBF2"
+                          ItemsSource="{Binding CollectionGroups, Source={StaticResource cvs}}"
+                          ItemTemplate="{StaticResource TranslationsJumpTemplate}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                <Setter Property="Margin" Value="0" />
+                                <Setter Property="Padding" Value="114 0 114 0"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </SemanticZoom.ZoomedOutView>
+            </SemanticZoom>
+
+        </Grid>
+
+        <!-- The SemanticZoom that contains Translations - snapped view -->
+        <Grid x:Name="snappedTranslationsGrid" Grid.Row="2" Background="#F6F6F9" DataContext="{Binding Path=TranslationViewModel}">
+
+            <SemanticZoom >
+                <SemanticZoom.ZoomedInView>
+                    <GridView SelectionMode="None"
+						      IsSwipeEnabled="false"
+						      IsItemClickEnabled="False"
+                              HorizontalAlignment="Stretch"
+                              ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              ItemsSource="{Binding Source={StaticResource cvs}}"
+                              ItemTemplateSelector="{StaticResource TranslationWithAdsDataTemplateSelector}">
+
+                        <GridView.GroupStyle>
+                            <GroupStyle HidesIfEmpty="True" HeaderTemplate="{StaticResource TranslationsGroupHeaderTemplate}">
+                                <GroupStyle.HeaderContainerStyle>
+                                    <Style TargetType="GridViewHeaderItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </GroupStyle.HeaderContainerStyle>
+
+                                <GroupStyle.Panel>
+                                    <ItemsPanelTemplate>
+                                        <VariableSizedWrapGrid Orientation="Vertical"/>
+                                    </ItemsPanelTemplate>
+                                </GroupStyle.Panel>
+                            </GroupStyle>
+                        </GridView.GroupStyle>
+
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="IsHitTestVisible" Value="False" />
+                                <Setter Property="Margin" Value="-4" />
+                            </Style>
+                        </GridView.ItemContainerStyle>
+
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid Orientation="Horizontal" GroupHeaderPlacement="Top"  />
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+                    </GridView>
+                </SemanticZoom.ZoomedInView>
+                <SemanticZoom.ZoomedOutView>
+                    <ListView Background="#FFEBEBF2"
+                          ItemsSource="{Binding Source={StaticResource cvs}, Path=CollectionGroups}"
+                          ItemTemplate="{StaticResource TranslationsJumpTemplate}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                <Setter Property="Margin" Value="0" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </SemanticZoom.ZoomedOutView>
+            </SemanticZoom>
+
+        </Grid>
+
+        <!-- The ProgressRing is showed when a translation is in progress -->
+        <ProgressRing Grid.Row="2" Width="100" Height="100" Foreground="#FF5E58C7" Background="Transparent" IsActive="{Binding TranslationViewModel.IsTranslating}" />
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar Background="#FF5E58C7" IsOpen="False" RequestedTheme="Dark">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="pinButton" Label="pin" Command="{Binding Path=PinCommand}" Icon="Pin" 
+                              Visibility="{Binding Path=CanPin, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <AppBarButton x:Name="unpinButton" Label="pin" Command="{Binding Path=UnpinCommand}" Icon="Unpin" 
+                              Visibility="{Binding Path=CanUnpin, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
