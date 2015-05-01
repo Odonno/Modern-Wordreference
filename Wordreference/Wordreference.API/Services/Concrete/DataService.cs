@@ -29,11 +29,6 @@ namespace Wordreference.API.Services.Concrete
 
         #region Methods
 
-        public bool CanLoad(Language languageDepart, Language languageArrive, string motRecherche)
-        {
-            throw new NotImplementedException();
-        }
-
         public void ClearData()
         {
             Translations.TraductionsPrincipales.Clear();
@@ -41,7 +36,7 @@ namespace Wordreference.API.Services.Concrete
             Translations.FormesComposees.Clear();
         }
 
-        public async Task Load(Language languageDepart, Language languageArrive, string motRecherche)
+        public async Task<bool> LoadAsync(Language languageDepart, Language languageArrive, string motRecherche)
         {
             ClearData();
 
@@ -51,6 +46,11 @@ namespace Wordreference.API.Services.Concrete
                 var apiLink = new Uri(string.Format("http://api.wordreference.com/0.8/8ef69/json/{0}{1}/{2}", languageDepart.Abbreviation, languageArrive.Abbreviation, motRecherche));
                 var formattedJson = await client.GetStringAsync(apiLink);
                 JObject value = JObject.Parse(formattedJson);
+
+                var errorValue = value.GetValue("Error");
+
+                if (errorValue != null && errorValue.ToString() == "NoTranslation")
+                    return false;
 
                 if (value["term0"] != null)
                 {
@@ -70,10 +70,12 @@ namespace Wordreference.API.Services.Concrete
                 LanguageDepart = languageDepart;
                 LanguageArrive = languageArrive;
                 MotRecherche = motRecherche;
+
+                return true;
             }
             catch (Exception ex)
             {
-                throw new Exception("Accès impossible à l'API", ex);
+                throw new Exception("API is unreachable", ex);
             }
         }
 

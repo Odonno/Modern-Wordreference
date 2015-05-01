@@ -18,9 +18,8 @@ namespace Wordreference.API.Services.Abstract
 
         #region Methods
 
-        bool CanLoad(Language languageDepart, Language languageArrive, string motRecherche);
         void ClearData();
-        Task Load(Language languageDepart, Language languageArrive, string motRecherche);
+        Task<bool> LoadAsync(Language languageDepart, Language languageArrive, string motRecherche);
 
         #endregion
     }

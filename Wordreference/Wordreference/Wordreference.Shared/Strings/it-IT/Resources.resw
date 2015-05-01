@@ -183,4 +183,7 @@
   <data name="savingSettings" xml:space="preserve">
     <value>saving settings</value>
   </data>
+  <data name="ApiErrorDescription" xml:space="preserve">
+    <value>Spiacenti, non possiamo trovare questa parola</value>
+  </data>
 </root>

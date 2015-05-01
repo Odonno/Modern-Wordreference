@@ -15,6 +15,15 @@ namespace Wordreference.Core.ViewModel.Concrete
 {
     internal class TranslationViewModel : ViewModelBase, ITranslationViewModel
     {
+        #region Fields
+
+        private readonly ResourceLoader _resourceLoader = ResourceLoader.GetForCurrentView("Resources");
+
+        private readonly ILocalNotificationService _localNotificationService;
+
+        #endregion
+
+
         #region Services
 
         public IStorageService StorageService { get; private set; }
@@ -25,10 +34,6 @@ namespace Wordreference.Core.ViewModel.Concrete
 
 
         #region Properties
-
-        private readonly ResourceLoader _resourceLoader = ResourceLoader.GetForCurrentView("Resources");
-        private readonly IMainViewModel _mainViewModel;
-
 
         private Language _languageDepart;
         public Language LanguageDepart
@@ -132,12 +137,16 @@ namespace Wordreference.Core.ViewModel.Concrete
         /// <summary>
         /// Initializes a new instance of the TranslationViewModel class.
         /// </summary>
-        public TranslationViewModel(IDataService dataService, ILanguageFactory languageFactory, IStorageService storageService)
+        public TranslationViewModel(IDataService dataService,
+            ILanguageFactory languageFactory,
+            IStorageService storageService,
+            ILocalNotificationService localNotificationService)
         {
-            // Injection
+            // Injection of services
             DataService = dataService;
             LanguageFactory = languageFactory;
             StorageService = storageService;
+            _localNotificationService = localNotificationService;
 
             // Commands
             TranslateCommand = new RelayCommand(Translate, CanTranslate);
@@ -161,8 +170,6 @@ namespace Wordreference.Core.ViewModel.Concrete
             {
                 // Code runs "for real"
 
-                // restore data
-                // Restore();
             }
         }
 
@@ -243,17 +250,17 @@ namespace Wordreference.Core.ViewModel.Concrete
         }
         private async void Translate()
         {
-            try
+            // first step : clear data (logic & view)
+            DataService.ClearData();
+            CurrentTranslations.Clear();
+            RaisePropertyChanged("TranslatedKeyGroup");
+
+            // second step : start translating
+            IsTranslating = true;
+            bool loaded = await DataService.LoadAsync(LanguageDepart, LanguageArrive, MotRecherche);
+
+            if (loaded)
             {
-                // first step : clear data (logic & view)
-                DataService.ClearData();
-                CurrentTranslations.Clear();
-                RaisePropertyChanged("TranslatedKeyGroup");
-
-                // second step : start translating
-                IsTranslating = true;
-                await DataService.Load(LanguageDepart, LanguageArrive, MotRecherche);
-
                 // third step : update TranslatedKeyGroup (that will notify view)
                 CurrentTranslations.Populate(DataService.Translations);
                 RaisePropertyChanged("TranslatedKeyGroup");
@@ -264,8 +271,9 @@ namespace Wordreference.Core.ViewModel.Concrete
                 // and notify main commands
                 ViewModelLocator.MainVM.TranslationDone();
             }
-            catch
+            else
             {
+                _localNotificationService.SendNotification(null, _resourceLoader.GetString("ApiErrorDescription"));
             }
 
             IsTranslating = false;

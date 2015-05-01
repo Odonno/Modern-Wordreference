@@ -51,12 +51,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\BaseSecondaryTileService.cs" />
     <Compile Include="Services\Abstract\IFileStorageService.cs" />
+    <Compile Include="Services\Abstract\ILocalNotificationService.cs" />
     <Compile Include="Services\Abstract\IRatingService.cs" />
     <Compile Include="Services\Abstract\ISecondaryTileService.cs" />
     <Compile Include="Services\Abstract\ISerializerService.cs" />
     <Compile Include="Services\Abstract\IStorageService.cs" />
     <Compile Include="Services\Concrete\FileStorageService.cs" />
     <Compile Include="Services\Concrete\JsonSerializerService.cs" />
+    <Compile Include="Services\Concrete\LocalNotificationService.cs" />
     <Compile Include="Services\Concrete\LocalStorageService.cs" />
     <Compile Include="Services\Concrete\RatingService.cs" />
     <Compile Include="Services\Concrete\SaveData.cs" />
