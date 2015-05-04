@@ -232,25 +232,25 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="82"/>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Height="50" Background="{Binding Settings.SelectedTheme, Converter={StaticResource PrimaryThemeConverter}, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}"
+        <Grid Background="{Binding Settings.SelectedTheme, Converter={StaticResource PrimaryThemeConverter}, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}"
               RequestedTheme="{Binding Settings.SelectedTheme, ConverterParameter=inverse, Converter={StaticResource RequestedThemeConverter}, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}">
-           
-            <TextBlock HorizontalAlignment="Left" Text="wordreference" 
-                       Margin="12 0 0 0" TextWrapping="Wrap" 
-                       VerticalAlignment="Top" FontSize="36" 
+
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                       Text="wordreference" 
+                       Margin="12 0 0 6" TextWrapping="Wrap" 
+                       FontSize="54" 
                        Style="{StaticResource TitleTextBlockStyle}"
                        Canvas.ZIndex="0"
                        Foreground="{Binding Settings.SelectedTheme, Converter={StaticResource SecondaryThemeConverter}, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}"/>
 
             <WindowsPhone81:AdMediatorControl x:Name="AdMediator_BC069B" 
-                                          HorizontalAlignment="Left" VerticalAlignment="Top"
-                                          Height="50" Width="320"
+                                          HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                           Id="AdMediator-Id-A8488576-22E0-46BD-9502-194E61621F3A"
                                           Canvas.ZIndex="1" />
         </Grid>
