@@ -186,4 +186,7 @@
   <data name="ApiErrorDescription" xml:space="preserve">
     <value>Spiacenti, non possiamo trovare questa parola</value>
   </data>
+  <data name="RequiredInternetConnection" xml:space="preserve">
+    <value>Questa applicazione richiede una connessione a internet</value>
+  </data>
 </root>

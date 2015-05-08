@@ -19,7 +19,7 @@ namespace Wordreference.API.Services.Abstract
         #region Methods
 
         void ClearData();
-        Task<bool> LoadAsync(Language languageDepart, Language languageArrive, string motRecherche);
+        Task<bool?> LoadAsync(Language languageDepart, Language languageArrive, string motRecherche);
 
         #endregion
     }

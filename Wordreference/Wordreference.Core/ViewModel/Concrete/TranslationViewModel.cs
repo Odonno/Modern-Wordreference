@@ -257,23 +257,30 @@ namespace Wordreference.Core.ViewModel.Concrete
 
             // second step : start translating
             IsTranslating = true;
-            bool loaded = await DataService.LoadAsync(LanguageDepart, LanguageArrive, MotRecherche);
+            bool? loaded = await DataService.LoadAsync(LanguageDepart, LanguageArrive, MotRecherche);
 
-            if (loaded)
+            if (loaded.HasValue)
             {
-                // third step : update TranslatedKeyGroup (that will notify view)
-                CurrentTranslations.Populate(DataService.Translations);
-                RaisePropertyChanged("TranslatedKeyGroup");
+                if (loaded.Value)
+                {
+                    // third step : update TranslatedKeyGroup (that will notify view)
+                    CurrentTranslations.Populate(DataService.Translations);
+                    RaisePropertyChanged("TranslatedKeyGroup");
 
-                // last step : save translated data
-                Save();
+                    // last step : save translated data
+                    Save();
 
-                // and notify main commands
-                ViewModelLocator.MainVM.TranslationDone();
+                    // and notify main commands
+                    ViewModelLocator.MainVM.TranslationDone();
+                }
+                else
+                {
+                    _localNotificationService.SendNotification(null, _resourceLoader.GetString("ApiErrorDescription"));
+                }
             }
             else
             {
-                _localNotificationService.SendNotification(null, _resourceLoader.GetString("ApiErrorDescription"));
+                _localNotificationService.SendNotification(null, _resourceLoader.GetString("RequiredInternetConnection"));
             }
 
             IsTranslating = false;

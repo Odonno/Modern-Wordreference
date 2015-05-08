@@ -36,7 +36,7 @@ namespace Wordreference.API.Services.Concrete
             Translations.FormesComposees.Clear();
         }
 
-        public async Task<bool> LoadAsync(Language languageDepart, Language languageArrive, string motRecherche)
+        public async Task<bool?> LoadAsync(Language languageDepart, Language languageArrive, string motRecherche)
         {
             ClearData();
 
@@ -75,7 +75,7 @@ namespace Wordreference.API.Services.Concrete
             }
             catch (Exception ex)
             {
-                throw new Exception("API is unreachable", ex);
+                return null;
             }
         }
 

@@ -186,4 +186,7 @@
   <data name="ApiErrorDescription" xml:space="preserve">
     <value>Lo sentimos, no podemos encontrar el palabra</value>
   </data>
+  <data name="RequiredInternetConnection" xml:space="preserve">
+    <value>Esta aplicación requiere una conexión a Internet</value>
+  </data>
 </root>
