@@ -20,6 +20,8 @@ using Windows.UI.Xaml.Navigation;
 // Pour plus d'informations sur le modèle Application vide, consultez la page http://go.microsoft.com/fwlink/?LinkId=234227
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Practices.ServiceLocation;
+using Wordreference.Core.Services.Abstract;
 using Wordreference.Core.ViewModel;
 
 
@@ -76,6 +78,9 @@ namespace Wordreference
                 DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+
+            // set Telemetry Client to Core API
+            ServiceLocator.Current.GetInstance<ITelemetryService>().TelemetryClient = TelemetryClient;
 
             Frame rootFrame = Window.Current.Content as Frame;
 

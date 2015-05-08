@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Wordreference.Core.Services.Abstract;
@@ -19,6 +20,13 @@ namespace Wordreference.Core.ViewModel.Concrete
     /// </summary>
     internal class MainViewModel : ViewModelBase, IMainViewModel
     {
+        #region Fields
+
+        private readonly ITelemetryService _telemetryService;
+
+        #endregion
+
+
         #region Properties
 
         public IRatingService RatingService { get; private set; }
@@ -65,7 +73,8 @@ namespace Wordreference.Core.ViewModel.Concrete
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel(IRatingService ratingService,
-            ISecondaryTileService<ITranslationViewModel> translationsSecondaryTileService)
+            ISecondaryTileService<ITranslationViewModel> translationsSecondaryTileService,
+            ITelemetryService telemetryService)
         {
             // Injection of ViewModels
             TranslationViewModel = ViewModelLocator.TranslationVM;
@@ -74,6 +83,7 @@ namespace Wordreference.Core.ViewModel.Concrete
             // Injection of services
             RatingService = ratingService;
             TranslationsSecondaryTileService = translationsSecondaryTileService;
+            _telemetryService = telemetryService;
 
             // Commands
             PinCommand = new RelayCommand(Pin);
@@ -101,12 +111,24 @@ namespace Wordreference.Core.ViewModel.Concrete
         {
             await TranslationsSecondaryTileService.CreateSecondaryTile(TranslationViewModel);
             TranslationDone();
+
+            _telemetryService.TelemetryClient.TrackEvent("Pin",
+                new Dictionary<string, string>
+                {
+                    {"Word", TranslationViewModel.MotRecherche}
+                });
         }
 
         private async void Unpin()
         {
             await TranslationsSecondaryTileService.RemoveSecondaryTile(TranslationViewModel);
             TranslationDone();
+
+            _telemetryService.TelemetryClient.TrackEvent("UnPin",
+                new Dictionary<string, string>
+                {
+                    {"Word", TranslationViewModel.MotRecherche}
+                });
         }
 
         #endregion

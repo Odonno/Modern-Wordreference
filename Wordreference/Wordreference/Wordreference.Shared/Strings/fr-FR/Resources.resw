@@ -166,10 +166,10 @@
     <value>principales</value>
   </data>
   <data name="dark" xml:space="preserve">
-    <value>sombre</value>
+    <value>dark</value>
   </data>
   <data name="light" xml:space="preserve">
-    <value>clair</value>
+    <value>light</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>annuler</value>

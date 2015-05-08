@@ -61,6 +61,7 @@ namespace Wordreference.Core.ViewModel
             SimpleIoc.Default.Register<IDataService, DataService>();
             SimpleIoc.Default.Register<ISecondaryTileService<ITranslationViewModel>, TranslationsSecondaryTileService>();
             SimpleIoc.Default.Register<ILocalNotificationService, LocalNotificationService>();
+            SimpleIoc.Default.Register<ITelemetryService, TelemetryService>();
 
             // View Models
             SimpleIoc.Default.Register<IMainViewModel, MainViewModel>();

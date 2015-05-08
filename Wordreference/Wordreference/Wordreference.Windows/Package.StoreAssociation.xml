@@ -368,6 +368,7 @@
     <MainPackageIdentityName>49142DavidBOTTIAU.LePong</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.Mmorise-moi</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.ModernGitHub</MainPackageIdentityName>
+    <MainPackageIdentityName>49142DavidBOTTIAU.ModernGitter</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.OptimisationdeDantzig</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.Pomodorize</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.Pousse-moi</MainPackageIdentityName>
@@ -383,32 +384,32 @@
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.4.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.5.0.0</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.4.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.5.0.0</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.4.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.5.0.0</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.4.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.5.0.0</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.4.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.5.0.0</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.4.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.5.0.0</PackageMaxArchitectureVersion>
       </PackageInfo>
     </BundleInfo>
   </PackageInfoList>

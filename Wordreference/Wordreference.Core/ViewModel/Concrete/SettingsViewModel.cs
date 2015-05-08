@@ -16,6 +16,8 @@ namespace Wordreference.Core.ViewModel.Concrete
         #region Fields
 
         private readonly IFileStorageService _fileStorageService;
+        private readonly ITelemetryService _telemetryService;
+
         private readonly ResourceLoader _resourceLoader = ResourceLoader.GetForCurrentView("Resources");
 
         private const string _filename = "settings";
@@ -43,16 +45,19 @@ namespace Wordreference.Core.ViewModel.Concrete
         /// <summary>
         /// Initializes a new instance of the SettingsViewModel class.
         /// </summary>
-        public SettingsViewModel(IFileStorageService fileStorageService)
+        public SettingsViewModel(IFileStorageService fileStorageService,
+            ITelemetryService telemetryService)
         {
             // injection
             _fileStorageService = fileStorageService;
+            _telemetryService = telemetryService;
+
             _fileStorageService.FormatFile = "txt";
 
             // properties
             _isRestoring = true;
 
-            Themes = new[] { _resourceLoader.GetString("light"), _resourceLoader.GetString("dark") };
+            Themes = new[] { "light", "dark" };
             _selectedTheme = Themes.First();
 
             if (IsInDesignMode)
@@ -113,6 +118,12 @@ namespace Wordreference.Core.ViewModel.Concrete
 
         private async void SaveChanges(string newTheme)
         {
+            _telemetryService.TelemetryClient.TrackEvent("SwitchTheme",
+               new Dictionary<string, string>
+                {
+                    {"To", newTheme}
+                });
+
             // save and exit the app
             await Save(newTheme);
             Application.Current.Exit();

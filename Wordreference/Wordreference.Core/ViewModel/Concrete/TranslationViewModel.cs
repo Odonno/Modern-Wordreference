@@ -20,6 +20,7 @@ namespace Wordreference.Core.ViewModel.Concrete
         private readonly ResourceLoader _resourceLoader = ResourceLoader.GetForCurrentView("Resources");
 
         private readonly ILocalNotificationService _localNotificationService;
+        private readonly ITelemetryService _telemetryService;
 
         #endregion
 
@@ -140,13 +141,15 @@ namespace Wordreference.Core.ViewModel.Concrete
         public TranslationViewModel(IDataService dataService,
             ILanguageFactory languageFactory,
             IStorageService storageService,
-            ILocalNotificationService localNotificationService)
+            ILocalNotificationService localNotificationService,
+            ITelemetryService telemetryService)
         {
             // Injection of services
             DataService = dataService;
             LanguageFactory = languageFactory;
             StorageService = storageService;
             _localNotificationService = localNotificationService;
+            _telemetryService = telemetryService;
 
             // Commands
             TranslateCommand = new RelayCommand(Translate, CanTranslate);
@@ -272,15 +275,37 @@ namespace Wordreference.Core.ViewModel.Concrete
 
                     // and notify main commands
                     ViewModelLocator.MainVM.TranslationDone();
+
+                    _telemetryService.TelemetryClient.TrackEvent("TranslationDone", new Dictionary<string, string>
+                    {
+                        {"Word", MotRecherche},
+                        {"From", LanguageDepart.Abbreviation},
+                        {"To", LanguageArrive.Abbreviation}
+                    }, new Dictionary<string, double>
+                    {
+                        {"PrincipalTranslations", CurrentTranslations.TraductionsPrincipales.Count},
+                        {"AdditionalTranslations", CurrentTranslations.TraductionsAdditionnelles.Count},
+                        {"CompoundForms", CurrentTranslations.FormesComposees.Count}
+                    });
                 }
                 else
                 {
                     _localNotificationService.SendNotification(null, _resourceLoader.GetString("ApiErrorDescription"));
+
+                    _telemetryService.TelemetryClient.TrackEvent("NoAvailableTranslation",
+                        new Dictionary<string, string>
+                        {
+                            {"Word", MotRecherche},
+                            {"From", LanguageDepart.Abbreviation},
+                            {"To", LanguageArrive.Abbreviation}
+                        });
                 }
             }
             else
             {
                 _localNotificationService.SendNotification(null, _resourceLoader.GetString("RequiredInternetConnection"));
+
+                _telemetryService.TelemetryClient.TrackEvent("NoInternetConnection");
             }
 
             IsTranslating = false;
@@ -307,6 +332,13 @@ namespace Wordreference.Core.ViewModel.Concrete
         }
         private void Switch()
         {
+            _telemetryService.TelemetryClient.TrackEvent("SwitchLanguage",
+                new Dictionary<string, string>
+                {
+                    {"From", LanguageDepart.Abbreviation},
+                    {"To", LanguageArrive.Abbreviation}
+                });
+
             var languageSwitch = LanguageDepart;
             LanguageDepart = LanguageArrive;
             LanguageArrive = languageSwitch;
