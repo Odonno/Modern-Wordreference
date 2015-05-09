@@ -28,6 +28,7 @@ namespace Wordreference.Core.Factories.Concrete
                     new Language {Nom = _resourceLoader.GetString("czech"),        Abbreviation = "cz",    Image = "czech-republic.png"},
                     new Language {Nom = _resourceLoader.GetString("english"),      Abbreviation = "en",    Image = "United_Kingdom.png"},
                     new Language {Nom = _resourceLoader.GetString("french"),       Abbreviation = "fr",    Image = "French.png"},
+                    new Language {Nom = _resourceLoader.GetString("german"),       Abbreviation = "de",    Image = "Germany.png"},
                     new Language {Nom = _resourceLoader.GetString("greek"),        Abbreviation = "gr",    Image = "Greek.png"},
                     new Language {Nom = _resourceLoader.GetString("italian"),      Abbreviation = "it",    Image = "Italy.png"},
                     new Language {Nom = _resourceLoader.GetString("japanese"),     Abbreviation = "ja",    Image = "japan.png"},
@@ -35,7 +36,9 @@ namespace Wordreference.Core.Factories.Concrete
                     new Language {Nom = _resourceLoader.GetString("polish"),       Abbreviation = "pl",    Image = "Poland.png"},
                     new Language {Nom = _resourceLoader.GetString("portuguese"),   Abbreviation = "pt",    Image = "Portugal.png"},
                     new Language {Nom = _resourceLoader.GetString("romanian"),     Abbreviation = "ro",    Image = "Romania.png"},
+                    new Language {Nom = _resourceLoader.GetString("russian"),      Abbreviation = "ru",    Image = "Russia.png"},
                     new Language {Nom = _resourceLoader.GetString("spanish"),      Abbreviation = "es",    Image = "Spain.png"},
+                    new Language {Nom = _resourceLoader.GetString("swedish"),      Abbreviation = "sv",    Image = "Sweden.png"},
                     new Language {Nom = _resourceLoader.GetString("turkish"),      Abbreviation = "tr",    Image = "turkey.png"},
                 };
         }

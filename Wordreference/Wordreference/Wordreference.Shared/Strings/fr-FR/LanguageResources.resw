@@ -132,6 +132,9 @@
   <data name="french" xml:space="preserve">
     <value>français</value>
   </data>
+  <data name="german" xml:space="preserve">
+    <value>allemand</value>
+  </data>
   <data name="greek" xml:space="preserve">
     <value>grec</value>
   </data>
@@ -153,8 +156,14 @@
   <data name="romanian" xml:space="preserve">
     <value>roumain</value>
   </data>
+  <data name="russian" xml:space="preserve">
+    <value>russe</value>
+  </data>
   <data name="spanish" xml:space="preserve">
     <value>espagnol</value>
+  </data>
+  <data name="swedish" xml:space="preserve">
+    <value>suédois</value>
   </data>
   <data name="turkish" xml:space="preserve">
     <value>turc</value>

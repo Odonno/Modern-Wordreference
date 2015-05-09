@@ -39,14 +39,17 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\china.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\czech-republic.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\French.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\Germany.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\Greek.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\Italy.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\japan.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\Poland.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\Portugal.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\Romania.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\Russia.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\south_korea.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\Spain.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\Sweden.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\turkey.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Languages\United_Kingdom.png" />
   </ItemGroup>
