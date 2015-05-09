@@ -248,8 +248,7 @@ namespace Wordreference.Core.ViewModel.Concrete
 
         private bool CanTranslate()
         {
-            return !string.IsNullOrWhiteSpace(MotRecherche) && LanguageDepart != LanguageArrive && !IsTranslating &&
-                (LanguageDepart.Abbreviation == "en" || LanguageArrive.Abbreviation == "en");
+            return !IsTranslating && DataService.CanTranslate(LanguageDepart, LanguageArrive, MotRecherche);
         }
         private async void Translate()
         {

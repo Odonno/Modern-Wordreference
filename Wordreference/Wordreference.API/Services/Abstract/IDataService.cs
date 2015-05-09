@@ -18,6 +18,7 @@ namespace Wordreference.API.Services.Abstract
         #region Methods
 
         void ClearData();
+        bool CanTranslate(Language languageDepart, Language languageArrive, string motRecherche);
         Task<bool?> LoadAsync(Language languageDepart, Language languageArrive, string motRecherche);
 
         #endregion

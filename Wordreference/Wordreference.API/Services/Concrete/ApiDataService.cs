@@ -23,6 +23,18 @@ namespace Wordreference.API.Services.Concrete
 
         #region Methods
 
+        public override bool CanTranslate(Language languageDepart, Language languageArrive, string motRecherche)
+        {
+            return base.CanTranslate(languageDepart, languageArrive, motRecherche) &&
+                   (languageDepart.Abbreviation == "en" || languageArrive.Abbreviation == "en") &&
+                   !RequireLanguage(languageDepart, "de", "sv", "ru") &&
+                   !RequireLanguage(languageArrive, "de", "sv", "ru"); // Not supporting German / Swedish / Russian
+        }
+        private bool RequireLanguage(Language language, params string[] abbreviations)
+        {
+            return abbreviations.Any(abbr => language.Abbreviation == abbr);
+        }
+
         public override async Task<bool?> LoadAsync(Language languageDepart, Language languageArrive, string motRecherche)
         {
             ClearData();

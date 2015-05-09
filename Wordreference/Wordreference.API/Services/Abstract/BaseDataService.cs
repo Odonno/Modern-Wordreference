@@ -28,6 +28,14 @@ namespace Wordreference.API.Services.Abstract
             Translations.FormesComposees.Clear();
         }
 
+        public virtual bool CanTranslate(Language languageDepart, Language languageArrive, string motRecherche)
+        {
+            return !string.IsNullOrWhiteSpace(motRecherche) &&
+                   languageDepart != null &&
+                   languageArrive != null &&
+                   languageDepart != languageArrive;
+        }
+
         public abstract Task<bool?> LoadAsync(Language languageDepart, Language languageArrive, string motRecherche);
 
         #endregion

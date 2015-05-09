@@ -12,8 +12,7 @@ namespace Wordreference.Core.Factories.Concrete
 
         private readonly ResourceLoader _resourceLoader = ResourceLoader.GetForCurrentView("LanguageResources");
 
-        private readonly IEnumerable<Language> _languages;
-        public IEnumerable<Language> Languages { get { return _languages; } }
+        public IEnumerable<Language> Languages { get; private set; }
 
         #endregion
 
@@ -22,7 +21,7 @@ namespace Wordreference.Core.Factories.Concrete
 
         public LanguageFactory()
         {
-            _languages = new List<Language>
+            Languages = new List<Language>
                 {
                     new Language {Nom = _resourceLoader.GetString("arabic"),       Abbreviation = "ar",    Image = "arabic_language.png"},
                     new Language {Nom = _resourceLoader.GetString("chinese"),      Abbreviation = "zh",    Image = "china.png"},
