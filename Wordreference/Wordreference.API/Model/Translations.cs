@@ -6,26 +6,14 @@ namespace Wordreference.API.Model
     {
         #region Properties
 
-        private ObservableCollection<Translation> _traductionsPrincipales = new ObservableCollection<Translation>();
-        public ObservableCollection<Translation> TraductionsPrincipales
-        {
-            get { return _traductionsPrincipales; }
-            set { _traductionsPrincipales = value; }
-        }
+        private readonly ObservableCollection<Translation> _traductionsPrincipales = new ObservableCollection<Translation>();
+        public ObservableCollection<Translation> TraductionsPrincipales { get { return _traductionsPrincipales; } }
 
-        private ObservableCollection<Translation> _traductionsAdditionnelles = new ObservableCollection<Translation>();
-        public ObservableCollection<Translation> TraductionsAdditionnelles
-        {
-            get { return _traductionsAdditionnelles; }
-            set { _traductionsAdditionnelles = value; }
-        }
+        private readonly ObservableCollection<Translation> _traductionsAdditionnelles = new ObservableCollection<Translation>();
+        public ObservableCollection<Translation> TraductionsAdditionnelles { get { return _traductionsAdditionnelles; } }
 
-        private ObservableCollection<Translation> _formesComposees = new ObservableCollection<Translation>();
-        public ObservableCollection<Translation> FormesComposees
-        {
-            get { return _formesComposees; }
-            set { _formesComposees = value; }
-        }
+        private readonly ObservableCollection<Translation> _formesComposees = new ObservableCollection<Translation>();
+        public ObservableCollection<Translation> FormesComposees { get { return _formesComposees; } }
 
         #endregion
 

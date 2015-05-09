@@ -10,7 +10,6 @@ namespace Wordreference.API.Services.Abstract
         Language LanguageDepart { get; }
         Language LanguageArrive { get; }
         string MotRecherche { get; }
-
         Translations Translations { get; }
 
         #endregion

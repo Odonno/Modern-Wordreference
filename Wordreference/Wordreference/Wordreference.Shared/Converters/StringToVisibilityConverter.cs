@@ -8,9 +8,9 @@ namespace Wordreference.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (!(value is String))
+            if (!(value is string))
                 return Visibility.Collapsed;
-            return (String.IsNullOrWhiteSpace(value as String)) ? Visibility.Collapsed : Visibility.Visible;
+            return (string.IsNullOrWhiteSpace(value as string)) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

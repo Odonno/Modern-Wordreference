@@ -1,12 +1,11 @@
-﻿using System;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace Wordreference.TemplateSelectors
 {
     public class TranslationDataTemplateSelector : DataTemplateSelector
     {
-        private Int32 _alternativeNumber = 1;
+        private int _alternativeNumber = 1;
 
 
         public DataTemplate TranslationTemplate { get; set; }

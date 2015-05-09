@@ -42,15 +42,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\TranslationHelpers.cs" />
     <Compile Include="Model\Term.cs" />
     <Compile Include="Model\Translation.cs" />
     <Compile Include="Model\Translations.cs" />
     <Compile Include="Model\Language.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Abstract\BaseDataService.cs" />
     <Compile Include="Services\Abstract\IDataService.cs" />
-    <Compile Include="Services\Concrete\DataService.cs" />
+    <Compile Include="Services\Concrete\ApiDataService.cs" />
+    <Compile Include="Services\Concrete\WebDataService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

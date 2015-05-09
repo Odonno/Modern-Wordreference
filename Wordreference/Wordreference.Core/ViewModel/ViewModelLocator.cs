@@ -46,19 +46,19 @@ namespace Wordreference.Core.ViewModel
             //else
             //{
             //    // Create run time view services and models
-            //    //SimpleIoc.Default.Register<IDataService, DataService>();
+            //    //SimpleIoc.Default.Register<IDataService, ApiDataService>();
             //}
             
             // Factories
             SimpleIoc.Default.Register<ILanguageFactory, LanguageFactory>();
 
             // Services
-            SimpleIoc.Default.Register<IDataService, DataService>();
+            SimpleIoc.Default.Register<IDataService, ApiDataService>();
             SimpleIoc.Default.Register<IStorageService, LocalStorageService>();
             SimpleIoc.Default.Register<IFileStorageService, FileStorageService>();
             SimpleIoc.Default.Register<ISerializerService<SaveData>, JsonSerializerService<SaveData>>();
             SimpleIoc.Default.Register<IRatingService, RatingService>();
-            SimpleIoc.Default.Register<IDataService, DataService>();
+            SimpleIoc.Default.Register<IDataService, ApiDataService>();
             SimpleIoc.Default.Register<ISecondaryTileService<ITranslationViewModel>, TranslationsSecondaryTileService>();
             SimpleIoc.Default.Register<ILocalNotificationService, LocalNotificationService>();
             SimpleIoc.Default.Register<ITelemetryService, TelemetryService>();
@@ -87,16 +87,6 @@ namespace Wordreference.Core.ViewModel
         public ITranslationViewModel Translation { get { return ServiceLocator.Current.GetInstance<ITranslationViewModel>(); } }
         public IAboutViewModel About { get { return ServiceLocator.Current.GetInstance<IAboutViewModel>(); } }
         public ISettingsViewModel Settings { get { return ServiceLocator.Current.GetInstance<ISettingsViewModel>(); } }
-
-        #endregion
-
-
-        #region Methods
-
-        public static void Cleanup()
-        {
-            // TODO : Clear the ViewModels
-        }
 
         #endregion
     }

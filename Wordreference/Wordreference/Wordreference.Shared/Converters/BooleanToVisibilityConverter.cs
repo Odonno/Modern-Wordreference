@@ -11,8 +11,8 @@ namespace Wordreference.Converters
             if (value is bool)
                 return ((bool) value) ? Visibility.Visible : Visibility.Collapsed;
 
-            if (value is Int32)
-                return ((Int32)value == 0) ? Visibility.Collapsed : Visibility.Visible;
+            if (value is int)
+                return ((int)value == 0) ? Visibility.Collapsed : Visibility.Visible;
 
             return Visibility.Collapsed;
         }
