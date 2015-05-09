@@ -246,6 +246,10 @@
       <Project>{1181f356-b9f4-4872-af49-bc709c4abfaf}</Project>
       <Name>Wordreference.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Wordreference.Model\Wordreference.Model.csproj">
+      <Project>{cc1bd8d5-6735-438b-bd11-d162cec11e32}</Project>
+      <Name>Wordreference.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

@@ -1,4 +1,4 @@
-﻿namespace Wordreference.API.Model
+﻿namespace Wordreference.Model
 {
     public class Language
     {

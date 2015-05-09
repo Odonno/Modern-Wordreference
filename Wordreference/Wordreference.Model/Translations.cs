@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace Wordreference.API.Model
+namespace Wordreference.Model
 {
     public class Translations
     {

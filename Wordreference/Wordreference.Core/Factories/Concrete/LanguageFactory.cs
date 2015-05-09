@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Windows.ApplicationModel.Resources;
-using Wordreference.API.Model;
 using Wordreference.Core.Factories.Abstract;
+using Wordreference.Model;
 
 namespace Wordreference.Core.Factories.Concrete
 {

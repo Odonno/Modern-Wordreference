@@ -43,6 +43,10 @@
       <Project>{b27cb1e8-3981-4fb8-9103-b9e15cccfa63}</Project>
       <Name>Wordreference.API</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Wordreference.Model\Wordreference.Model.csproj">
+      <Project>{cc1bd8d5-6735-438b-bd11-d162cec11e32}</Project>
+      <Name>Wordreference.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModel\Concrete\AlphaKeyGroup.cs" />

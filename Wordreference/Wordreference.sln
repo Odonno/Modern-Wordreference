@@ -1,21 +1,35 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Wordreference.Shared", "Wordreference\Wordreference.Shared\Wordreference.Shared.shproj", "{59012C70-1871-47A4-9C1B-8DFE799327D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordreference.Windows", "Wordreference\Wordreference.Windows\Wordreference.Windows.csproj", "{AD283B56-605C-4D54-B07E-5F15F116D7CE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32} = {CC1BD8D5-6735-438B-BD11-D162CEC11E32}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordreference.WindowsPhone", "Wordreference\Wordreference.WindowsPhone\Wordreference.WindowsPhone.csproj", "{E327C6FF-5B3D-45B5-A959-349BAEF1B5A5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32} = {CC1BD8D5-6735-438B-BD11-D162CEC11E32}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A8F242D0-F917-4A92-80AD-0587A5546629}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Front", "Front", "{A1A24F78-D27A-4EAA-AB65-E35CF37385CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordreference.Core", "Wordreference.Core\Wordreference.Core.csproj", "{1181F356-B9F4-4872-AF49-BC709C4ABFAF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32} = {CC1BD8D5-6735-438B-BD11-D162CEC11E32}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordreference.API", "Wordreference.API\Wordreference.API.csproj", "{B27CB1E8-3981-4FB8-9103-B9E15CCCFA63}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32} = {CC1BD8D5-6735-438B-BD11-D162CEC11E32}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordreference.Model", "Wordreference.Model\Wordreference.Model.csproj", "{CC1BD8D5-6735-438B-BD11-D162CEC11E32}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -98,6 +112,22 @@ Global
 		{B27CB1E8-3981-4FB8-9103-B9E15CCCFA63}.Release|ARM.ActiveCfg = Release|Any CPU
 		{B27CB1E8-3981-4FB8-9103-B9E15CCCFA63}.Release|x64.ActiveCfg = Release|Any CPU
 		{B27CB1E8-3981-4FB8-9103-B9E15CCCFA63}.Release|x86.ActiveCfg = Release|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Debug|ARM.Build.0 = Debug|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Debug|x64.Build.0 = Debug|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Debug|x86.Build.0 = Debug|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Release|ARM.Build.0 = Release|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Release|x64.ActiveCfg = Release|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Release|x64.Build.0 = Release|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Release|x86.ActiveCfg = Release|Any CPU
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,5 +138,6 @@ Global
 		{E327C6FF-5B3D-45B5-A959-349BAEF1B5A5} = {A1A24F78-D27A-4EAA-AB65-E35CF37385CF}
 		{1181F356-B9F4-4872-AF49-BC709C4ABFAF} = {A8F242D0-F917-4A92-80AD-0587A5546629}
 		{B27CB1E8-3981-4FB8-9103-B9E15CCCFA63} = {A8F242D0-F917-4A92-80AD-0587A5546629}
+		{CC1BD8D5-6735-438B-BD11-D162CEC11E32} = {A8F242D0-F917-4A92-80AD-0587A5546629}
 	EndGlobalSection
 EndGlobal

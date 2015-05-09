@@ -1,5 +1,5 @@
-﻿using Wordreference.API.Model;
-using Wordreference.Core.DataModel.Abstract;
+﻿using Wordreference.Core.DataModel.Abstract;
+using Wordreference.Model;
 
 namespace Wordreference.Core.DataModel.Concrete
 {
@@ -9,6 +9,7 @@ namespace Wordreference.Core.DataModel.Concrete
         public Term FirstTranslation { get; set; }
         public Term SecondTranslation { get; set; }
         public string GroupName { get; set; }
+
 
         public TranslationDataModel(Translation translation)
         {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Wordreference.API.Model;
+using Wordreference.Model;
 
 namespace Wordreference.Core.Factories.Abstract
 {

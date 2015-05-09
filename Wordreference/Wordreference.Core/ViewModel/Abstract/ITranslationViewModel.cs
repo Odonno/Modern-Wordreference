@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using GalaSoft.MvvmLight.Command;
-using Wordreference.API.Model;
 using Wordreference.API.Services.Abstract;
 using Wordreference.Core.DataModel.Concrete;
 using Wordreference.Core.Factories.Abstract;
 using Wordreference.Core.Services.Abstract;
+using Wordreference.Model;
 
 namespace Wordreference.Core.ViewModel.Abstract
 {

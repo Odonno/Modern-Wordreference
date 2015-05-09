@@ -3,8 +3,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using Wordreference.API.Model;
 using Wordreference.API.Services.Abstract;
+using Wordreference.Model;
 
 namespace Wordreference.API.Services.Concrete
 {

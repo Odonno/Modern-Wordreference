@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Wordreference.API.Model;
+using Wordreference.Model;
 
 namespace Wordreference.API.Services.Abstract
 {

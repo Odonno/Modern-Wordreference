@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Wordreference.API.Model;
 using Wordreference.API.Services.Abstract;
+using Wordreference.Model;
 
 namespace Wordreference.API.Services.Concrete
 {

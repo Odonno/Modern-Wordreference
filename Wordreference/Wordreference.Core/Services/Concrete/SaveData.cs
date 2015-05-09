@@ -1,4 +1,4 @@
-﻿using Wordreference.API.Model;
+﻿using Wordreference.Model;
 
 namespace Wordreference.Core.Services.Concrete
 {
