@@ -126,8 +126,6 @@
     </AppxManifest>
     <None Include="ApplicationInsights.config" />
     <None Include="packages.config" />
-    <None Include="Wordreference.Windows_StoreKey.pfx" />
-    <None Include="Wordreference.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight, Version=4.4.32.26491, Culture=neutral, processorArchitecture=MSIL">
