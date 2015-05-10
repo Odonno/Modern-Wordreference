@@ -53,12 +53,11 @@ namespace Wordreference.Core.ViewModel
             SimpleIoc.Default.Register<ILanguageFactory, LanguageFactory>();
 
             // Services
-            SimpleIoc.Default.Register<IDataService, ApiDataService>();
+            SimpleIoc.Default.Register<IDataService, WebDataService>();
             SimpleIoc.Default.Register<IStorageService, LocalStorageService>();
             SimpleIoc.Default.Register<IFileStorageService, FileStorageService>();
             SimpleIoc.Default.Register<ISerializerService<SaveData>, JsonSerializerService<SaveData>>();
             SimpleIoc.Default.Register<IRatingService, RatingService>();
-            SimpleIoc.Default.Register<IDataService, ApiDataService>();
             SimpleIoc.Default.Register<ISecondaryTileService<ITranslationViewModel>, TranslationsSecondaryTileService>();
             SimpleIoc.Default.Register<ILocalNotificationService, LocalNotificationService>();
             SimpleIoc.Default.Register<ITelemetryService, TelemetryService>();

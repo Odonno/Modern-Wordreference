@@ -39,38 +39,46 @@ namespace Wordreference.API.Services.Concrete
         {
             ClearData();
 
+            string url = string.Format("http://api.wordreference.com/{0}/{1}/json/{2}{3}/{4}",
+                        ApiVersion,
+                        ApiKey,
+                        languageDepart.Abbreviation,
+                        languageArrive.Abbreviation,
+                        motRecherche);
+
             try
             {
-                var client = new HttpClient();
-                var apiLink = new Uri(string.Format("http://api.wordreference.com/{0}/{1}/json/{2}{3}/{4}", ApiVersion, ApiKey, languageDepart.Abbreviation, languageArrive.Abbreviation, motRecherche));
-                var formattedJson = await client.GetStringAsync(apiLink);
-                JObject value = JObject.Parse(formattedJson);
-
-                var errorValue = value.GetValue("Error");
-
-                if (errorValue != null && errorValue.ToString() == "NoTranslation")
-                    return false;
-
-                if (value["term0"] != null)
+                using (var client = new HttpClient())
                 {
-                    if (value["term0"]["PrincipalTranslations"] != null)
-                        foreach (var translationToken in value["term0"]["PrincipalTranslations"])
-                            Translations.TraductionsPrincipales.Add(JsonToTranslation(translationToken));
+                    var formattedJson = await client.GetStringAsync(url);
+                    var value = JObject.Parse(formattedJson);
 
-                    if (value["term0"]["AdditionalTranslations"] != null)
-                        foreach (var translationToken in value["term0"]["AdditionalTranslations"])
-                            Translations.TraductionsAdditionnelles.Add(JsonToTranslation(translationToken));
+                    var errorValue = value.GetValue("Error");
+
+                    if (errorValue != null && errorValue.ToString() == "NoTranslation")
+                        return false;
+
+                    if (value["term0"] != null)
+                    {
+                        if (value["term0"]["PrincipalTranslations"] != null)
+                            foreach (var translationToken in value["term0"]["PrincipalTranslations"])
+                                Translations.TraductionsPrincipales.Add(JsonToTranslation(translationToken));
+
+                        if (value["term0"]["AdditionalTranslations"] != null)
+                            foreach (var translationToken in value["term0"]["AdditionalTranslations"])
+                                Translations.TraductionsAdditionnelles.Add(JsonToTranslation(translationToken));
+                    }
+
+                    if (value["original"] != null && value["original"]["Compounds"] != null)
+                        foreach (var translationToken in value["original"]["Compounds"])
+                            Translations.FormesComposees.Add(JsonToTranslation(translationToken));
+
+                    LanguageDepart = languageDepart;
+                    LanguageArrive = languageArrive;
+                    MotRecherche = motRecherche;
+
+                    return true;
                 }
-
-                if (value["original"] != null && value["original"]["Compounds"] != null)
-                    foreach (var translationToken in value["original"]["Compounds"])
-                        Translations.FormesComposees.Add(JsonToTranslation(translationToken));
-
-                LanguageDepart = languageDepart;
-                LanguageArrive = languageArrive;
-                MotRecherche = motRecherche;
-
-                return true;
             }
             catch (Exception ex)
             {
