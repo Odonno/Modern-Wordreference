@@ -64,43 +64,15 @@ namespace Wordreference.API.Services.Concrete
 
                     bool nextTopSection = false;
 
-                    foreach (var traduction in traductionsRootTable.Descendants().Where(d => d.Name == "tr").Skip(1))
+                    foreach (var translationNode in traductionsRootTable.Descendants().Where(d => d.Name == "tr").Skip(1))
                     {
-                        if (traduction.Attributes["class"] != null && traduction.Attributes["class"].Value == "wrtopsection")
+                        if (translationNode.Attributes["class"] != null && translationNode.Attributes["class"].Value == "wrtopsection")
                             nextTopSection = true;
 
-                        if (traduction.Attributes["id"] == null)
+                        if (translationNode.Attributes["id"] == null)
                             continue;
-                        
-                        var translation = new Translation();
 
-                        // Add the orginal term FROM
-                        var fromWord = traduction.Descendants()
-                            .FirstOrDefault(d => d.Name == "td" && d.Attributes["class"] != null && d.Attributes["class"].Value == "FrWrd");
-
-                        translation.TermeOriginal = new Term
-                        {
-                            Nom = WebUtility.HtmlDecode(fromWord.Descendants().FirstOrDefault(d => d.Name == "strong").InnerText),
-                            Type = WebUtility.HtmlDecode(fromWord.Descendants().FirstOrDefault(d => d.Name == "em").FirstChild.InnerText)
-                        };
-
-                        // Add the translation TO
-                        var toWord = traduction.Descendants()
-                            .FirstOrDefault(d => d.Name == "td" && d.Attributes["class"] != null && d.Attributes["class"].Value == "ToWrd");
-
-                        translation.FirstTranslation = new Term
-                        {
-                            Nom = WebUtility.HtmlDecode(toWord.FirstChild.InnerText),
-                            Type = WebUtility.HtmlDecode(toWord.Descendants().FirstOrDefault(d => d.Name == "em").FirstChild.InnerText)
-                        };
-
-                        // Add the "Sens" property
-                        var middle = traduction.Descendants()
-                            .FirstOrDefault(d => d.Name == "td" && d.Attributes["class"] == null);
-
-                        translation.TermeOriginal.Sens = WebUtility.HtmlDecode(middle.FirstChild.InnerText);
-                        if (middle.ChildNodes.Count > 1)
-                            translation.FirstTranslation.Sens = WebUtility.HtmlDecode(middle.ChildNodes[1].InnerText);
+                        var translation = RetrieveGridTranslation(translationNode);
 
                         if (nextTopSection)
                         {
@@ -113,7 +85,7 @@ namespace Wordreference.API.Services.Concrete
                             Translations.TraductionsPrincipales.Add(translation);
                         }
                     }
-                    
+
                     // Retrieve FormesComposees
                     var formesComposeesRootTable = htmlDocument.DocumentNode.Descendants().FirstOrDefault(d =>
                         d.Name == "table" &&
@@ -122,7 +94,13 @@ namespace Wordreference.API.Services.Concrete
                         d.Attributes["id"] != null &&
                         d.Attributes["id"].Value == "compound_forms");
 
-                    //Translations.FormesComposees.Add();
+                    foreach (var translationNode in formesComposeesRootTable.Descendants().Where(d => d.Name == "tr").Skip(1))
+                    {
+                        if (translationNode.Attributes["id"] == null)
+                            continue;
+
+                        Translations.FormesComposees.Add(RetrieveGridTranslation(translationNode));
+                    }
 
                     LanguageDepart = languageDepart;
                     LanguageArrive = languageArrive;
@@ -135,6 +113,57 @@ namespace Wordreference.API.Services.Concrete
             {
                 return null;
             }
+        }
+
+        private Translation RetrieveGridTranslation(HtmlNode translationNode)
+        {
+            var translation = new Translation();
+
+            // Add the orginal term FROM
+            var fromWord = translationNode.Descendants()
+                .FirstOrDefault(d => d.Name == "td" && d.Attributes["class"] != null && d.Attributes["class"].Value == "FrWrd");
+
+            if (fromWord != null)
+            {
+                translation.TermeOriginal = new Term();
+
+                translation.TermeOriginal.Nom =
+                    WebUtility.HtmlDecode(
+                        fromWord.Descendants().FirstOrDefault(d => d.Name == "strong").InnerText);
+
+                var typeNode = fromWord.Descendants().FirstOrDefault(d => d.Name == "em").FirstChild;
+                if (typeNode != null)
+                    translation.TermeOriginal.Type = WebUtility.HtmlDecode(typeNode.InnerText);
+            }
+
+            // Add the translation TO
+            var toWord = translationNode.Descendants()
+                .FirstOrDefault(d => d.Name == "td" && d.Attributes["class"] != null && d.Attributes["class"].Value == "ToWrd");
+
+            if (toWord != null)
+            {
+                translation.FirstTranslation = new Term();
+
+                translation.FirstTranslation.Nom = WebUtility.HtmlDecode(toWord.FirstChild.InnerText);
+
+                var typeNode = toWord.Descendants().FirstOrDefault(d => d.Name == "em").FirstChild;
+                if (typeNode != null)
+                    translation.FirstTranslation.Type = WebUtility.HtmlDecode(typeNode.InnerText);
+            }
+
+
+            // Add the "Sens" property
+            var middle = translationNode.Descendants()
+                .FirstOrDefault(d => d.Name == "td" && d.Attributes["class"] == null);
+
+            if (middle != null && middle.FirstChild != null)
+            {
+                translation.TermeOriginal.Sens = WebUtility.HtmlDecode(middle.FirstChild.InnerText);
+                if (middle.ChildNodes.Count > 1)
+                    translation.FirstTranslation.Sens = WebUtility.HtmlDecode(middle.ChildNodes[1].InnerText);
+            }
+
+            return translation;
         }
 
         #endregion
