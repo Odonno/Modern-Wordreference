@@ -43,16 +43,4 @@
             <TextBlock x:Uid="/UIResources/infosApp2" Margin="0 10 0 0" Style="{ThemeResource BodyTextBlockStyle}" />
         </StackPanel>
     </Grid>
-
-    <Page.BottomAppBar>
-        <CommandBar Background="#FF5E58C7" IsOpen="False">
-            <CommandBar.PrimaryCommands>
-                <AppBarButton x:Name="goToTwitterButton" Label="tweet me" Command="{Binding Path=GoToTwitterCommand}">
-                    <AppBarButton.Icon>
-                        <BitmapIcon UriSource="Assets/Icons/Twitter-Bird.png" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-            </CommandBar.PrimaryCommands>
-        </CommandBar>
-    </Page.BottomAppBar>
 </Page>

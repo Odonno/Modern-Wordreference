@@ -1,6 +1,6 @@
-MainPackage=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\bin\Release\Wordreference.WindowsPhone_2.9.0.0_AnyCPU.appx
-SymbolPackage=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\AppPackages\Wordreference.WindowsPhone_2.9.0.0_Test\Wordreference.WindowsPhone_2.9.0.0_AnyCPU.appxsym
-ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\bin\Release\Wordreference.WindowsPhone_2.9.0.0_language-de.appx
-ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\bin\Release\Wordreference.WindowsPhone_2.9.0.0_language-es.appx
-ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\bin\Release\Wordreference.WindowsPhone_2.9.0.0_language-fr.appx
-ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\bin\Release\Wordreference.WindowsPhone_2.9.0.0_language-it.appx
+MainPackage=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\bin\Release\Wordreference.WindowsPhone_2.9.1.0_AnyCPU.appx
+SymbolPackage=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\AppPackages\Wordreference.WindowsPhone_2.9.1.0_Test\Wordreference.WindowsPhone_2.9.1.0_AnyCPU.appxsym
+ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\bin\Release\Wordreference.WindowsPhone_2.9.1.0_language-de.appx
+ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\bin\Release\Wordreference.WindowsPhone_2.9.1.0_language-es.appx
+ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\bin\Release\Wordreference.WindowsPhone_2.9.1.0_language-fr.appx
+ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.WindowsPhone\bin\Release\Wordreference.WindowsPhone_2.9.1.0_language-it.appx
