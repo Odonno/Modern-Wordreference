@@ -151,7 +151,7 @@
             <Setter Property="MinWidth" Value="30"/>
         </Style>
 
-        <!-- Nutton style -->
+        <!-- Button style -->
         <Style x:Key="TextBlockButtonStyle" TargetType="ButtonBase">
             <Setter Property="MinWidth" Value="0"/>
             <Setter Property="MinHeight" Value="0"/>
@@ -232,7 +232,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="82"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
