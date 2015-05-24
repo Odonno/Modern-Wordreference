@@ -11,7 +11,7 @@ using Wordreference.Core.ViewModel.Abstract;
 
 namespace Wordreference.Core.ViewModel.Concrete
 {
-    internal class SettingsViewModel : ViewModelBase, ISettingsViewModel
+    public class SettingsViewModel : ViewModelBase, ISettingsViewModel
     {
         #region Fields
 

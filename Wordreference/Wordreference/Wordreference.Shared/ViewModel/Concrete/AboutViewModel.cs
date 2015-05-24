@@ -7,7 +7,7 @@ using Wordreference.Core.ViewModel.Abstract;
 
 namespace Wordreference.Core.ViewModel.Concrete
 {
-    internal class AboutViewModel : ViewModelBase, IAboutViewModel
+    public class AboutViewModel : ViewModelBase, IAboutViewModel
     {
         #region Fields
 

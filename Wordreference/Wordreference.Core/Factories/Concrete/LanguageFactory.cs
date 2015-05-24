@@ -6,7 +6,7 @@ using Wordreference.Model;
 
 namespace Wordreference.Core.Factories.Concrete
 {
-    internal class LanguageFactory : ILanguageFactory
+    public class LanguageFactory : ILanguageFactory
     {
         #region Properties
 

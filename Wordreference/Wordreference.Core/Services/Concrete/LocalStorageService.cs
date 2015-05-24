@@ -4,7 +4,7 @@ using Wordreference.Model;
 
 namespace Wordreference.Core.Services.Concrete
 {
-    internal class LocalStorageService : IStorageService
+    public class LocalStorageService : IStorageService
     {
         #region Properties
 

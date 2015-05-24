@@ -8,7 +8,7 @@ using Wordreference.Core.Services.Abstract;
 
 namespace Wordreference.Core.Services.Concrete
 {
-    internal sealed class RatingService : IRatingService
+    public sealed class RatingService : IRatingService
     {
         #region Properties
 

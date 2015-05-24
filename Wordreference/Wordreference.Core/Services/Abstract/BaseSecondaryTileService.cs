@@ -4,7 +4,7 @@ using Windows.UI.StartScreen;
 
 namespace Wordreference.Core.Services.Abstract
 {
-    internal abstract class BaseSecondaryTileService<T> : ISecondaryTileService<T> where T : class
+    public abstract class BaseSecondaryTileService<T> : ISecondaryTileService<T> where T : class
     {
         public abstract string TileId(T entity);
         public bool IsSecondaryTileExist(T entity)

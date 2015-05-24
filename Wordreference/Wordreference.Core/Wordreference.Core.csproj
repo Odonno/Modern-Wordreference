@@ -74,12 +74,7 @@
     <Compile Include="DataModel\Abstract\ITranslationDataModel.cs" />
     <Compile Include="ViewModel\Abstract\ISettingsViewModel.cs" />
     <Compile Include="ViewModel\Abstract\ITranslationViewModel.cs" />
-    <Compile Include="ViewModel\Concrete\AboutViewModel.cs" />
-    <Compile Include="ViewModel\Concrete\MainViewModel.cs" />
     <Compile Include="DataModel\Concrete\TranslationDataModel.cs" />
-    <Compile Include="ViewModel\Concrete\SettingsViewModel.cs" />
-    <Compile Include="ViewModel\Concrete\TranslationViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight">

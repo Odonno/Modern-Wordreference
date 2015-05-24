@@ -11,7 +11,7 @@ using Wordreference.Core.ViewModel.Abstract;
 
 namespace Wordreference.Core.Services.Concrete
 {
-    internal class TranslationsSecondaryTileService : BaseSecondaryTileService<ITranslationViewModel>
+    public class TranslationsSecondaryTileService : BaseSecondaryTileService<ITranslationViewModel>
     {
         #region Properties
 

@@ -31,6 +31,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ImageSourceConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\TranslationDataTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Concrete\AboutViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Concrete\MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Concrete\SettingsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Concrete\TranslationViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\Ads\wordreference.png" />

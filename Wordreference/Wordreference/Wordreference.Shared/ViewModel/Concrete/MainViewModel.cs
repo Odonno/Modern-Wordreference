@@ -18,7 +18,7 @@ namespace Wordreference.Core.ViewModel.Concrete
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    internal class MainViewModel : ViewModelBase, IMainViewModel
+    public class MainViewModel : ViewModelBase, IMainViewModel
     {
         #region Fields
 

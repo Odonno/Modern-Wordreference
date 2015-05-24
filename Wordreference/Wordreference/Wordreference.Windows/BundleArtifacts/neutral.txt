@@ -1,7 +1,7 @@
-MainPackage=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.5.1.0_Bundle\Wordreference.Windows_2.5.1.0_AnyCPU.appx
-SymbolPackage=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\AppPackages\Wordreference.Windows_2.5.1.0_Test\Wordreference.Windows_2.5.1.0_AnyCPU.appxsym
-ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.5.1.0_Bundle\Wordreference.Windows_2.5.1.0_language-de.appx
-ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.5.1.0_Bundle\Wordreference.Windows_2.5.1.0_language-es.appx
-ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.5.1.0_Bundle\Wordreference.Windows_2.5.1.0_language-fr.appx
-ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.5.1.0_Bundle\Wordreference.Windows_2.5.1.0_language-it.appx
-ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.5.1.0_Bundle\Wordreference.Windows_2.5.1.0_scale-140.appx
+MainPackage=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.6.0.1_Bundle\Wordreference.Windows_2.6.0.1_AnyCPU.appx
+SymbolPackage=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\AppPackages\Wordreference.Windows_2.6.0.1_Test\Wordreference.Windows_2.6.0.1_AnyCPU.appxsym
+ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.6.0.1_Bundle\Wordreference.Windows_2.6.0.1_language-de.appx
+ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.6.0.1_Bundle\Wordreference.Windows_2.6.0.1_language-es.appx
+ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.6.0.1_Bundle\Wordreference.Windows_2.6.0.1_language-fr.appx
+ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.6.0.1_Bundle\Wordreference.Windows_2.6.0.1_language-it.appx
+ResourcePack=C:\Users\David\Documents\GitHub\Modern-Wordreference\Wordreference\Wordreference\Wordreference.Windows\bin\Release\Wordreference.Windows_2.6.0.1_Bundle\Wordreference.Windows_2.6.0.1_scale-140.appx

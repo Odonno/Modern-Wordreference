@@ -13,7 +13,7 @@ using Wordreference.Model;
 
 namespace Wordreference.Core.ViewModel.Concrete
 {
-    internal class TranslationViewModel : ViewModelBase, ITranslationViewModel
+    public class TranslationViewModel : ViewModelBase, ITranslationViewModel
     {
         #region Fields
 

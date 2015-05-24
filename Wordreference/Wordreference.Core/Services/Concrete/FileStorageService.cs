@@ -4,7 +4,7 @@ using Wordreference.Core.Services.Abstract;
 
 namespace Wordreference.Core.Services.Concrete
 {
-    internal class FileStorageService : IFileStorageService
+    public class FileStorageService : IFileStorageService
     {
         #region Properties
 

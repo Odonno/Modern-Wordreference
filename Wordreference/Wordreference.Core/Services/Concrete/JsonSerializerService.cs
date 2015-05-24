@@ -4,7 +4,7 @@ using Wordreference.Core.Services.Abstract;
 
 namespace Wordreference.Core.Services.Concrete
 {
-    internal sealed class JsonSerializerService<T> : ISerializerService<T>
+    public sealed class JsonSerializerService<T> : ISerializerService<T>
     {
         #region Methods
 

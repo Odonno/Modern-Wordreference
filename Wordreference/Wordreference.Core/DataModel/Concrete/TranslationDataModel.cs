@@ -3,7 +3,7 @@ using Wordreference.Model;
 
 namespace Wordreference.Core.DataModel.Concrete
 {
-    internal class TranslationDataModel : ITranslationDataModel
+    public class TranslationDataModel : ITranslationDataModel
     {
         public Term TermeOriginal { get; set; }
         public Term FirstTranslation { get; set; }
