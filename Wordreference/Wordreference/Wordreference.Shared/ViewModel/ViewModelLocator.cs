@@ -71,7 +71,6 @@ namespace Wordreference.Core.ViewModel
             // View Models
             SimpleIoc.Default.Register<IMainViewModel, MainViewModel>();
             SimpleIoc.Default.Register<ITranslationViewModel, TranslationViewModel>();
-            SimpleIoc.Default.Register<IAboutViewModel, AboutViewModel>();
             SimpleIoc.Default.Register<ISettingsViewModel, SettingsViewModel>();
         }
 
@@ -80,7 +79,6 @@ namespace Wordreference.Core.ViewModel
 
         public static IMainViewModel MainVM { get { return ServiceLocator.Current.GetInstance<IMainViewModel>(); } }
         public static ITranslationViewModel TranslationVM { get { return ServiceLocator.Current.GetInstance<ITranslationViewModel>(); } }
-        public static IAboutViewModel AboutVM { get { return ServiceLocator.Current.GetInstance<IAboutViewModel>(); } }
         public static ISettingsViewModel SettingsVM { get { return ServiceLocator.Current.GetInstance<ISettingsViewModel>(); } }
 
         #endregion
@@ -90,7 +88,6 @@ namespace Wordreference.Core.ViewModel
 
         public IMainViewModel Main { get { return ServiceLocator.Current.GetInstance<IMainViewModel>(); } }
         public ITranslationViewModel Translation { get { return ServiceLocator.Current.GetInstance<ITranslationViewModel>(); } }
-        public IAboutViewModel About { get { return ServiceLocator.Current.GetInstance<IAboutViewModel>(); } }
         public ISettingsViewModel Settings { get { return ServiceLocator.Current.GetInstance<ISettingsViewModel>(); } }
 
         #endregion

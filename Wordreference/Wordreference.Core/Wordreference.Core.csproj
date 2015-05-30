@@ -69,7 +69,6 @@
     <Compile Include="Services\Concrete\SaveData.cs" />
     <Compile Include="Services\Concrete\TelemetryService.cs" />
     <Compile Include="Services\Concrete\TranslationsSecondaryTileService.cs" />
-    <Compile Include="ViewModel\Abstract\IAboutViewModel.cs" />
     <Compile Include="ViewModel\Abstract\IMainViewModel.cs" />
     <Compile Include="DataModel\Abstract\ITranslationDataModel.cs" />
     <Compile Include="ViewModel\Abstract\ISettingsViewModel.cs" />
