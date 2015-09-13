@@ -51,6 +51,7 @@ namespace Wordreference.API.Services.Concrete
             {
                 using (var client = new HttpClient())
                 {
+                    client.DefaultRequestHeaders.Add("user-agent", "fake...");
                     string html = await client.GetStringAsync(url);
 
                     var htmlDocument = new HtmlDocument();

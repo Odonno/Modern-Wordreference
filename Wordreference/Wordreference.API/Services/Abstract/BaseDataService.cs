@@ -7,13 +7,9 @@ namespace Wordreference.API.Services.Abstract
     {
         #region Properties
 
-        private readonly Translations _translations = new Translations();
-        public Translations Translations { get { return _translations; } }
-
+        public Translations Translations { get; } = new Translations();
         public Language LanguageDepart { get; protected set; }
-
         public Language LanguageArrive { get; protected set; }
-
         public string MotRecherche { get; protected set; }
 
         #endregion

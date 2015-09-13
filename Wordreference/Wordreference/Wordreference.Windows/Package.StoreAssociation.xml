@@ -358,8 +358,7 @@
     <MainPackageIdentityName>49142DavidBOTTIAU.BatailleNavale</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.Bats-moi</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.Calcule-moi</MainPackageIdentityName>
-    <MainPackageIdentityName>49142DavidBOTTIAU.ColorCapture</MainPackageIdentityName>
-    <MainPackageIdentityName>49142DavidBOTTIAU.Coloreach</MainPackageIdentityName>
+    <MainPackageIdentityName>49142DavidBOTTIAU.Cestpasfaux</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.Colorrrs</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.Crypte-moi</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.Dessine-moi</MainPackageIdentityName>
@@ -373,43 +372,39 @@
     <MainPackageIdentityName>49142DavidBOTTIAU.Pomodorize</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.Pousse-moi</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.RenaultWindows8</MainPackageIdentityName>
-    <MainPackageIdentityName>49142DavidBOTTIAU.RumbleBubble</MainPackageIdentityName>
-    <MainPackageIdentityName>49142DavidBOTTIAU.StickmanLegends</MainPackageIdentityName>
     <MainPackageIdentityName>49142DavidBOTTIAU.Trouve-moi</MainPackageIdentityName>
-    <MainPackageIdentityName>49142DavidBOTTIAU.VisualLightStudio</MainPackageIdentityName>
-    <MainPackageIdentityName>49142DavidBOTTIAU.WantApps</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/a687ccbf-c4b2-4e9d-ae5f-4d70a61d746c">
+  <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9WZDNCRDR1GJ">
     <BundleInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.6.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.6.0.1</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.6.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.6.0.1</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.6.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.6.0.1</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.6.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.6.0.1</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.6.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.6.0.1</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>2.6.0.0</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>2.6.0.1</PackageMaxArchitectureVersion>
       </PackageInfo>
     </BundleInfo>
   </PackageInfoList>

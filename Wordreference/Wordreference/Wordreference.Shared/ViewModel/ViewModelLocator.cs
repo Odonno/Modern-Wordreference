@@ -53,12 +53,7 @@ namespace Wordreference.Core.ViewModel
             SimpleIoc.Default.Register<ILanguageFactory, LanguageFactory>();
 
             // Services
-
-#if WINDOWS_PHONE_APP
             SimpleIoc.Default.Register<IDataService, WebDataService>();
-#else
-            SimpleIoc.Default.Register<IDataService, ApiDataService>();
-#endif
 
             SimpleIoc.Default.Register<IStorageService, LocalStorageService>();
             SimpleIoc.Default.Register<IFileStorageService, FileStorageService>();
